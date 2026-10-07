@@ -1,0 +1,443 @@
+/* ==========================================================
+   Rupanshu Shah — academic site
+   One stylesheet shared by index.html, research.html, teaching.html
+   ========================================================== */
+
+:root {
+  --bg: #fbfaf7;
+  --surface: #f3f1ec;
+  --text: #1d1c1a;
+  --muted: #5f5c55;
+  --faint: #8d8981;
+  --rule: #e2ded6;
+  --accent: #7a2e22;        /* deep oxblood */
+  --accent-soft: #f2e6e2;
+  --todo: #b45309;
+  --serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161514;
+    --surface: #1f1e1c;
+    --text: #e9e6e0;
+    --muted: #aaa59c;
+    --faint: #7c776f;
+    --rule: #34322e;
+    --accent: #e09a8b;
+    --accent-soft: #2c211e;
+    --todo: #f0a54a;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.62;
+  font-feature-settings: "kern", "liga", "onum";
+}
+
+.wrap {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* ---------- Header / navigation ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--rule);
+}
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  padding-top: 1.4rem;
+  padding-bottom: 1.1rem;
+}
+.site-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--text);
+  text-decoration: none;
+}
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1.4rem;
+  font-family: var(--sans);
+  font-size: .85rem;
+  letter-spacing: .02em;
+}
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--text); }
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Typography ---------- */
+
+main { padding: 2.75rem 0 3rem; }
+
+h1, h2, h3 { font-weight: 600; line-height: 1.25; }
+
+h1 {
+  font-size: 2.1rem;
+  margin: 0 0 .35rem;
+  letter-spacing: -.005em;
+}
+
+h2 {
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 3.2rem 0 1.1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-size: 1.08rem;
+  margin: 0;
+}
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+em { font-style: italic; }
+.muted { color: var(--muted); }
+.small { font-size: .9rem; }
+
+.lede { font-size: 1.05rem; }
+
+/* ---------- Home: intro block ---------- */
+
+.intro {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.photo {
+  width: 11rem;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  position: relative;
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.photo .photo-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--sans);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--faint);
+  text-align: center;
+  padding: 1rem;
+}
+.role {
+  font-family: var(--sans);
+  font-size: .92rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 1.1rem;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1.2rem;
+  font-family: var(--sans);
+  font-size: .85rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Interest tags ---------- */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tags li {
+  font-family: var(--sans);
+  font-size: .82rem;
+  padding: .28rem .7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ---------- Generic entry lists (experience, education, teaching) ---------- */
+
+.entries { list-style: none; margin: 0; padding: 0; }
+.entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 1.5rem;
+  padding: 0 0 1.5rem;
+}
+.entry:last-child { padding-bottom: 0; }
+.entry .when {
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--faint);
+  white-space: nowrap;
+  padding-top: .2rem;
+}
+.entry .where {
+  font-family: var(--sans);
+  font-size: .88rem;
+  color: var(--muted);
+  margin: .1rem 0 .45rem;
+}
+.entry ul {
+  margin: .3rem 0 0;
+  padding-left: 1.1rem;
+}
+.entry ul li { margin-bottom: .3rem; }
+.entry > div > p:last-child { margin-bottom: 0; }
+
+/* ---------- Write-ups (featured) ---------- */
+
+.writeups { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.writeup {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 1.1rem 1.25rem 1.15rem;
+  background: var(--surface);
+}
+.writeup .kind {
+  font-family: var(--sans);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--faint);
+  margin: 0 0 .3rem;
+}
+.writeup h3 { margin-bottom: .45rem; }
+.writeup p { margin-bottom: .6rem; font-size: .96rem; }
+.writeup .links {
+  font-family: var(--sans);
+  font-size: .85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem 1.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Compact version used on the home page */
+.writeups.compact .writeup { padding: .85rem 1.1rem; }
+.writeups.compact .writeup p { font-size: .92rem; margin-bottom: 0; }
+
+/* ---------- Toolkit table ---------- */
+
+.toolkit { display: grid; gap: .9rem; margin: 0; }
+.toolkit div { display: grid; grid-template-columns: 12rem 1fr; gap: 1rem; }
+.toolkit dt {
+  font-family: var(--sans);
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding-top: .15rem;
+}
+.toolkit dd { margin: 0; }
+
+/* ---------- Honours ---------- */
+
+.plain { margin: 0; padding-left: 1.1rem; }
+.plain li { margin-bottom: .4rem; }
+
+/* ---------- Interests (deliberately quiet) ---------- */
+
+.interests p { font-size: .95rem; color: var(--muted); }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--faint);
+}
+.site-footer .wrap { padding-top: 1.2rem; padding-bottom: 2rem; }
+
+/* ---------- Placeholders: anything still to be filled in ----------
+   Any link whose href begins with "TODO" is drawn with a dashed
+   amber underline and a "link pending" note, so nothing unfinished
+   can go live unnoticed. Replace the href and the styling disappears. */
+
+a[href^="TODO"] {
+  color: var(--todo);
+  text-decoration: underline dashed;
+}
+a[href^="TODO"]::after {
+  content: " (link pending)";
+  font-size: .8em;
+  opacity: .85;
+}
+.todo {
+  color: var(--todo);
+  font-family: var(--sans);
+  font-size: .85em;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  main { padding-top: 2rem; }
+  h1 { font-size: 1.75rem; }
+  .intro { grid-template-columns: 1fr; gap: 1.25rem; }
+  .photo { width: 8.5rem; }
+  .entry { grid-template-columns: 1fr; }
+  .entry .when { order: -1; padding-top: 0; margin-bottom: .1rem; }
+  .toolkit div { grid-template-columns: 1fr; gap: .1rem; }
+}
+
+@media print {
+  .site-nav, .site-footer { display: none; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  a { color: #000; }
+}
+
+/* ==========================================================
+   Illustrated research directions (research.html)
+   ========================================================== */
+
+.illustrated { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.2rem; }
+.illustrated li { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.6rem; align-items: start; }
+.illustrated figure { margin: .3rem 0 0; }
+.illustrated svg { width: 100%; height: auto; display: block; color: var(--text); }
+.illustrated figcaption {
+  font-family: var(--sans);
+  font-size: .72rem;
+  line-height: 1.4;
+  color: var(--faint);
+  margin-top: .45rem;
+  text-align: center;
+}
+.illustrated h3 { margin-bottom: .35rem; }
+.illustrated p { margin: 0; }
+.svg-accent { color: var(--accent); }
+.svg-muted { color: var(--faint); }
+
+/* ==========================================================
+   Personal page
+   ========================================================== */
+
+.gallery {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: .9rem;
+}
+.gallery figure { margin: 0; }
+.gallery a { display: block; border-radius: 4px; overflow: hidden; border: 1px solid var(--rule); background: var(--surface); }
+.gallery img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.gallery a:hover img { transform: scale(1.03); }
+.gallery figcaption {
+  font-family: var(--sans);
+  font-size: .78rem;
+  color: var(--muted);
+  margin-top: .4rem;
+  text-align: center;
+}
+.gallery figcaption:empty { display: none; }
+
+.shelf {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--rule);
+}
+.shelf:first-of-type { border-top: 0; padding-top: .4rem; }
+.shelf-head h2 {
+  margin: 0 0 .4rem;
+  padding: 0;
+  border: 0;
+  color: var(--accent);
+}
+.shelf-head p {
+  font-size: .92rem;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.45;
+}
+.shelf dl { margin: 0; display: grid; gap: .85rem; }
+.shelf dt {
+  font-family: var(--sans);
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--faint);
+  margin-bottom: .15rem;
+}
+.shelf dd { margin: 0; line-height: 1.55; }
+.dotlist { list-style: none; margin: 0; padding: 0; display: inline; }
+.dotlist li { display: inline; }
+.dotlist li:not(:last-child)::after { content: " · "; color: var(--faint); }
+.note { color: var(--muted); font-size: .92em; }
+
+@media (max-width: 640px) {
+  .illustrated li { grid-template-columns: 1fr; gap: .6rem; }
+  .illustrated figure { max-width: 12rem; }
+  .shelf { grid-template-columns: 1fr; gap: .8rem; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+}
