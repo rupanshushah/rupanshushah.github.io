@@ -5,40 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Personal · Rupanshu Shah</title>
   <meta name="description" content="Rupanshu Shah outside research: books, cinema, music, sport and more.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Personal · Rupanshu Shah">
+  <meta property="og:description" content="Rupanshu Shah outside research: books, cinema, music, sport and more.">
+  <meta property="og:url" content="https://rupanshushah.github.io/personal.html">
+  <meta property="og:image" content="https://rupanshushah.github.io/share-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="fonts/spectral-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <script>
+  <script>
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
-    function toggleTheme() {
-      var root = document.documentElement;
-      var now = root.getAttribute('data-theme') ||
+    function currentTheme() {
+      return document.documentElement.getAttribute('data-theme') ||
         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      var next = (now === 'dark') ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
     }
+    function labelTheme() {
+      var b = document.getElementById('theme-switch');
+      if (b) b.textContent = currentTheme() === 'dark' ? 'Light' : 'Dark';
+    }
+    function toggleTheme() {
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      labelTheme();
+    }
+    document.addEventListener('DOMContentLoaded', labelTheme);
   </script>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="site-name" href="index.html">Rupanshu Shah</a>
-    <nav class="site-nav" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="teaching.html">Teaching</a>
-      <a href="personal.html" aria-current="page">Personal</a>
-      <a href="files/rupanshu-shah-cv.pdf">CV</a>
-            <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch between light and dark mode" title="Light / dark"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
-    </nav>
-  </div>
+<div class="wrap">
+
+<header class="topline">
+  <nav aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="personal.html" aria-current="page">Personal</a>
+    <a href="files/rupanshu-shah-cv.pdf">CV</a>
+  </nav>
+  <button id="theme-switch" class="theme-switch" type="button" onclick="toggleTheme()" aria-label="Switch between light and dark mode">Dark</button>
 </header>
 
-<main class="wrap">
+<main>
 
   <h1>Personal</h1>
   <p class="lede">A few of the things that fill my time outside research.</p>
@@ -86,7 +96,6 @@
               <li>Jane Austen</li>
               <li>Munshi Premchand</li>
               <li>Leo Tolstoy</li>
-              <li>Munshi Premchand</li>
               <li>Immanuel Kant</li>
             </ul>
           </dd>
@@ -259,15 +268,15 @@
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
+<footer class="colophon">
     Department of Computer Science and Engineering, IIT Delhi, Hauz Khas, New Delhi 110016<br>
     <a href="mailto:rupanshu@cse.iitd.ac.in">rupanshu@cse.iitd.ac.in</a> ·
     <a href="mailto:rupanshushah@gmail.com">rupanshushah@gmail.com</a> ·
     <a href="https://www.linkedin.com/in/rupanshu-shah">LinkedIn</a>
     <br>Last updated October 2026
-  </div>
 </footer>
+
+</div>
 
 </body>
 </html>

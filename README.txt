@@ -7,9 +7,13 @@ Files
   teaching.html  Teaching assistantships
   personal.html  Personal: photo gallery + reading, cinema, music, sport, leisure
   style.css      Shared styles (light + dark mode, mobile layout)
+  fonts/         Spectral and Spectral SC, served from the site itself (SIL Open Font License, fonts/OFL.txt)
   files/         PDFs linked from the site (write-ups and symposium slides)
   photos/        Photos for the Personal page
   photo.jpg      Home-page portrait
+  share-card.jpg Preview image shown when the site is shared on LinkedIn, WhatsApp, etc.
+  favicon.svg    Browser-tab icon
+  signature.html Email signature
 
 Adding a photo to the Personal page
   1. Put the image in photos/ (portrait, 3:4 looks best; resize to ~1400 px on the long side).
@@ -20,7 +24,7 @@ Adding an item to a Personal list
   Each list is a set of <li>...</li> lines; copy one and edit the text. The " · " separators appear automatically.
 
 Updating
-  PDFs           To update a write-up, replace the PDF in files/ and keep the same file name.
+  PDFs           To update a write-up or the CV, replace the PDF in files/ and keep the same file name.
   Footer date    "Last updated October 2026" at the bottom of each page.
 
 Publishing on GitHub Pages (free; the address stays live after you leave IIT Delhi)
